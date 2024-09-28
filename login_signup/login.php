@@ -22,9 +22,9 @@
                 if ($user['user_type'] === 'Admin') {
                     header("Location: /Serene Space/admin_panel/php/admin_dashboard.php");
                 } elseif ($user['user_type'] === 'Normal') {
-                    header("Location: /Serene Space/home/home.html");
+                    header("Location: home/home.html);
                 } elseif ($user['user_type'] === 'Therapist') {
-                    header("Location: /Serene Space/therapist_panel/therapist_login.php");
+                    header("Location: home/home.html");
                 } else {
                     echo "Invalid user type.";
                 }
