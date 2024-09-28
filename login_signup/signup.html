@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In Page</title>
+    <title>Sign Up Page</title>
     <link rel="stylesheet" href="signup.css">
 
     <link
@@ -31,7 +31,7 @@
     <div class="right-side">
 
         <div class="title">
-            <h2>Sign in</h2>
+            <h2>Sign up</h2>
         </div>
 
         <div class="logo"></div>
@@ -47,23 +47,26 @@
             </a>
         </div>
 
-        <div class="dont-account">
-
-            <p>Don't have an accout ? <a href="#">Sign up here</a>.</p>
-
+        <div class="already-account">
+            <p>Already have an account? <a href="#">Sign in here</a>.</p>
+            <br>
         </div>
 
         <br>
 
         <div class="form">
-            <form action="login.php" method="POST">
-            
-                <input type="email" name="Email" placeholder="Email Address" required>
-            
-                <input type="password" name="Password" placeholder="Enter your password" required>
-            
-               
-                <button type="submit">Sign in</button>
+            <form action="signup.php" method="POST">
+                <input type="text" name = "fullname" placeholder="Full Name" required>
+                <input type="email" name = "email" placeholder="Email Address" required>
+                <input type="password" name = "password" placeholder="Password (min 8 characters)" required>
+                <input type="password" name = "confirmPassword" placeholder="Confirm Password" required>
+                <label>
+                    <input type="checkbox" required> I am above 18 years of age
+                </label>
+                <label>
+                    <input type="checkbox" required> I accept Serene Space's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
+                </label>
+                <button type="submit">Create Account</button>
             </form>
         </div>
         
