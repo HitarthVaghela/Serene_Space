@@ -14,23 +14,35 @@
 		}
 	</script>
 </head>
-<?php 
-	include '../templates/connect_db.php' ;
-	session_start();
-	$admin_name = $_SESSION['username'];
-    
-	try {
-	    $stmt_users = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Normal'");
-	    $total_users = $stmt_users->fetchColumn();
+<?php
+include '../templates/connect_db.php';
+session_start();
 
-	    $stmt_therapists = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Therapist'");
-	    $total_therapists = $stmt_therapists->fetchColumn();
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'Admin') {
+    header("Location: /Serene_Space/login_signup/sign_in.html");
+    exit();
+}
 
-	    $stmt_admins = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Admin'");
-	    $total_admins = $stmt_admins->fetchColumn();
-	} catch (PDOException $e) {
-	    echo "Error: " . $e->getMessage();
-	}
+$admin_name = $_SESSION['username'];
+
+try {
+    $stmt_users = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Normal'");
+    $total_users = $stmt_users->fetchColumn();
+
+    $stmt_therapists = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Therapist'");
+    $total_therapists = $stmt_therapists->fetchColumn();
+
+    $stmt_admins = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Admin'");
+    $total_admins = $stmt_admins->fetchColumn();
+	
+    $today = date('Y-m-d');
+    $stmt_appointments = $pdo->prepare("SELECT COUNT(*) FROM appointments WHERE appointment_date = ?");
+    $stmt_appointments->execute([$today]);
+    $todays_appointments = $stmt_appointments->fetchColumn();
+
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 ?>
 
 <body>
@@ -81,7 +93,6 @@
 		</div>
 	</main>
 </div>
-
 </body>
 </html>
 
