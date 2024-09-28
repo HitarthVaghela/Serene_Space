@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar with Filters</title>
+    <link rel="stylesheet" href="Psy-main.css">
+</head>
+
+<body>
+
+    <header class="header">
+        
+        <div class="nav">
+            <ul>
+
+                <li class = "logo"> </li>
+                <li><h2><a href=""> Serene Space </a></h2> </li>
+
+                <li><a href="">Home</a></li>
+
+                <li class = "nav-link">
+
+                    <a href="">Services</a>
+
+                    <ul class="dropdown">
+
+                        <li><a href="/abt_us/about_us.html">About us</a></li>
+
+                        <li><a href="">Mood test</a></li>
+
+                        <li><a href="">Profile</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li ><a href="../abt_us/about_us.html">About</a></li>
+
+                <li ><a href="">Contact</a></li>
+
+            </ul>
+        </div>
+
+    </header>
+    
+   <main class = "main">
+
+        <div class="search-container">
+
+            <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+
+            <select id="stateFilter" class="filter-dropdown">
+
+            <option value="">Select State</option>
+            <option value="state1">State 1</option>
+            <option value="state2">State 2</option>
+            <option value="state3">State 3</option>
+
+            </select>
+
+            <select id="cityFilter" class="filter-dropdown">
+
+            <option value="">Select City</option>
+            <option value="city1">City 1</option>
+            <option value="city2">City 2</option>
+            <option value="city3">City 3</option>
+
+            </select>
+
+            <button class="search-button" onclick="search()">Search</button>
+
+        </div>
+
+        <div class="profiles">
+
+            <div class="profile">
+
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : John Doe </p>
+                    <p> Age :  25</p>
+                    <p> Gender : Male</p>
+                    <p> Location : State 1, City 1</p>
+                
+                     <div class="show-prf">
+    
+                        <a href="">View Profile</a>
+    
+                     </div>
+    
+                </div>
+    
+            </div>
+    
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : doc 2 </p>
+                    <p> Age :   29</p>
+                    <p> Gender : Female </p>
+                    <p> Location : State 2, City 2</p>
+                
+                    <div class="show-prf">
+    
+                        <a href="#">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : Doc 3 </p>
+                    <p> Age :  45</p>
+                    <p> Gender : Male</p>
+                    <p> Location : State 3, City 3</p>
+                
+                    <div class="show-prf">
+    
+                        <a href="/doc_profile/doc_profile.html">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : Doc 4 </p>
+                    <p> Age :  40</p>
+                    <p> Gender : Female</p>
+                    <p> Location : State 1, City 2</p>
+                
+                    <div class="show-prf">
+    
+                        <a href="#">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : Doc 5 </p>
+                    <p> Age :  30</p>
+                    <p> Gender : Female</p>
+                    <p> Location : State 2, City 2 </p>
+                
+                    <div class="show-prf">
+    
+                        <a href="#">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>            
+
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : Doc 6 </p>
+                    <p> Age :  24</p>
+                    <p> Gender : Female</p>
+                    <p> Location : State 3, City 3</p>
+                
+                    <div class="show-prf">
+    
+                        <a href="#">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div> 
+
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : Doc 7 </p>
+                    <p> Age :  43</p>
+                    <p> Gender : Male</p>
+                    <p> Location : State 1, City 1</p>
+                
+                    <div class="show-prf">
+    
+                        <a href="#">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : Doc 8 </p>
+                    <p> Age : 32 </p>
+                    <p> Gender : Female</p>
+                    <p> Location : State 2, City 2</p>
+                
+                    <div class="show-prf">
+    
+                        <a href="#">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>            
+
+            <div class="profile">
+    
+                <div class="img">
+    
+                    <img src="./psy_main_images/download.png" alt="">
+    
+                </div>
+    
+                <div class="details">
+    
+                    <p> Name : Doc 9 </p>
+                    <p> Age : 23 </p>
+                    <p> Gender : Male</p>
+                    <p> Location : State 3, City 3 </p>
+                
+                    <div class="show-prf">
+    
+                        <a href="">View Profile</a>
+    
+                    </div>
+    
+                </div>
+    
+            </div> 
+    
+            
+        </div>
+
+   </main>
+
+    <script src="search.js"></script>
+
+</body>
+
+</html>

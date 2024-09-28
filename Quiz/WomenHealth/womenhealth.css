@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Light background color */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto; /* Center the container */
+    background-color: #fff; /* White background for the form */
+    padding: 30px; /* Padding inside the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center text in the container */
+}
+
+h1 {
+    font-size: 24px; /* Font size for the header */
+    color: #007BFF; /* Blue color for the header */
+}
+
+.question {
+    margin-bottom: 20px; /* Space between questions */
+    text-align: left; /* Align question text to the left */
+}
+
+label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 10px; /* Space below each label */
+    background-color: #f9f9f9; /* Light grey background for labels */
+    padding: 10px; /* Padding inside labels */
+    border: 1px solid #ddd; /* Light border around labels */
+    border-radius: 4px; /* Rounded corners on labels */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+input[type='radio'] {
+    margin-right: 10px; /* Space between radio button and label text */
+}
+
+button {
+    padding: 12px 24px; /* Padding inside buttons */
+    background-color: #007BFF; /* Blue background for buttons */
+    color: white; /* White text color for buttons */
+    border: none; /* No border on buttons */
+    border-radius: 5px; /* Rounded corners on buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for button text */
+    width: 100%; /* Full width button */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#result {
+    margin-top: 20px; /* Space above result section */
+    padding: 15px; /* Padding inside result section */
+    background-color: #e7f3e7; /* Light greenish background for result section */
+    border-left: 6px solid #4CAF50; /* Green left border for emphasis */
+}
