@@ -17,7 +17,7 @@
 
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_type'] = $user['user_type'];
-                $_SESSION['userName'] = $user['fullname'];
+                $_SESSION['username'] = $user['fullname'];
 
                 if ($user['user_type'] === 'Admin') {
                     header("Location: /Serene Space/admin_panel/php/admin_dashboard.php");
