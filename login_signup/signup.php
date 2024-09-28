@@ -1,5 +1,5 @@
 <?php
-    include 'C:/xampp/htdocs/Serene Space/admin_panel/templates/connect_db.php';
+    include 'Serene_Space/admin_panel/templates/connect_db.php';
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
