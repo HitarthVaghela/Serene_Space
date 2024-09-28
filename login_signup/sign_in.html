@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Page</title>
+    <title>Sign In Page</title>
     <link rel="stylesheet" href="signup.css">
 
     <link
@@ -56,11 +56,11 @@
         <br>
 
         <div class="form">
-            <form>
+            <form action="login.php" method="POST">
             
-                <input type="email" placeholder="Email Address" required>
+                <input type="email" name="Email" placeholder="Email Address" required>
             
-                <input type="password" placeholder="Password (min 8 characters)" required>
+                <input type="password" name="Password" placeholder="Enter your password" required>
             
                
                 <button type="submit">Sign in</button>
