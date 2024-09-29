@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../pages/admin_login.html");
+header("Location: ../../login_signup/sign_in.html");
 exit();
 ?>
