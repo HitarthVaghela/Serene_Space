@@ -1,11 +1,12 @@
 <?php
 
-include 'connect_db.php';
+    include '../templates/connect_db.php' ;
+    include '../templates/sidebar_breadcrumb.php';
 
 try {
-    $stmt = $pdo->query("SELECT ui.user_id, ui.fullname, ui.email, ti.specialization 
+    $stmt = $pdo->query("SELECT ui.user_id, ui.fullname, ui.email, ti.speciality 
         FROM user_info ui 
-        JOIN therapist ti ON ui.user_id = ti.user_id 
+        JOIN therapist_info ti ON ui.user_id = ti.therapist_id 
         WHERE ui.user_type = 'Therapist'");
     $therapists = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -19,7 +20,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
-    <link rel="stylesheet" href="../assets/admin_dashboard.css">
+    <link rel="stylesheet" href="../assets/user.css">
+    <link rel="stylesheet" href="../assets/sidebar.css">
 </head>
 <body>
 
@@ -28,10 +30,10 @@ try {
 <table>
     <thead>
         <tr>
-            <th>UsTherapist ID</th>
+            <th>Therapist ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Specialization</th>
+            <th>Speciality</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -42,10 +44,8 @@ try {
                 <td><?= $therapist['user_id'] ?></td>
                 <td><?= $therapist['fullname'] ?></td>
                 <td><?= htmlspecialchars($therapist['email']) ?></td>
-                <td><?= $therapis['specicalization'] ?></td>
-                <td>
-                    <a href="edit_user.php?user_id=<?= urlencode($user['user_id']) ?>">Edit</a>
-                </td>
+                <td><?= $therapist['speciality'] ?></td>
+                <td><a href="edit_user.php?id=<?php echo $therapist['user_id']; ?>" class="edit-btn">Edit</a></td>
             </tr>
             <?php endforeach; ?>
         <?php else: ?>
