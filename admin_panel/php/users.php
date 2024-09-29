@@ -1,56 +1,99 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Users List</title>
+    <link rel="stylesheet" href="../assets/user.css">
+    <link rel="stylesheet" href="../assets/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+    
 
-include 'connect_db.php' ;
+<?php
+include '../templates/connect_db.php';
+include '../templates/sidebar_breadcrumb.php';
+
+$records_per_page = 10;
+
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $current_page = (int)$_GET['page'];
+} else {
+    $current_page = 1;
+}
+
+$start_from = ($current_page - 1) * $records_per_page;
 
 try {
-    $stmt = $pdo->query("SELECT user_id, fullname, email FROM user_info WHERE user_type = 'Normal' ");
+    $total_users_query = $pdo->query("SELECT COUNT(*) FROM user_info WHERE user_type = 'Normal'");
+    $total_users = $total_users_query->fetchColumn();
+
+    $stmt = $pdo->prepare("SELECT user_id, fullname, email FROM user_info WHERE user_type = 'Normal' LIMIT :start, :limit");
+    $stmt->bindParam(':start', $start_from, PDO::PARAM_INT);
+    $stmt->bindParam(':limit', $records_per_page, PDO::PARAM_INT);
+    $stmt->execute();
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User List</title>
-    <link rel="stylesheet" href="../assets/admin_dashboard.css">
-</head>
 <body>
 
-<h1>Users List</h1>
+<nav class="breadcrumb">
+    <a href="admin_dashboard.php">Home</a> / <a href="users.php">Users List</a>
+</nav>
 
-<table>
-    <thead>
-        <tr>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>User Type</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($users)): ?>
-            <?php foreach ($users as $user): ?>
-            <tr>
-                <td><?= $user['user_id'] ?></td>
-                <td><?= $user['fullname'] ?></td>
-                <td><?= htmlspecialchars($user['email']) ?></td>
-                <td>
-                    <a href="edit_user.php?user_id=<?= urlencode($user['user_id']) ?>">Edit</a>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr>
-                <td colspan="4">No users found.</td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+<main class="dashboard">
+    <h1>Users List</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td><?php echo $user['user_id']; ?></td>
+                        <td><?php echo htmlspecialchars($user['fullname']); ?></td>
+                        <td><?php echo htmlspecialchars($user['email']); ?></td>
+                        <td><a href="edit_user.php?id=<?php echo $user['user_id']; ?>" class="edit-btn">Edit</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <?php
+
+        $total_pages = ceil($total_users / $records_per_page);
+
+        if ($current_page > 1) {
+            echo '<a href="users.php?page=' . ($current_page - 1) . '">« Prev</a>';
+        }
+
+        for ($i = 1; $i <= $total_pages; $i++) {
+            if ($i == $current_page) {
+                echo '<a href="users.php?page=' . $i . '" class="active">' . $i . '</a>';
+            } else {
+                echo '<a href="users.php?page=' . $i . '">' . $i . '</a>';
+            }
+        }
+
+        if ($current_page < $total_pages) {
+            echo '<a href="users.php?page=' . ($current_page + 1) . '">Next »</a>';
+        }
+        ?>
+    </div>
+</main>
 
 </body>
 </html>
