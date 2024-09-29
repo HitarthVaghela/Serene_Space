@@ -1,40 +1,38 @@
 <?php
-    include 'Serene_Space/admin_panel/templates/connect_db.php';
-    session_start();
+session_start();
+include '../admin_panel/templates/connect_db.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-       
-        $email = $_POST['Email'];
-        $password = $_POST['Password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['Email'];
+    $password = $_POST['Password'];
 
-        try {
+    try {
+        $stmt = $pdo->prepare("SELECT user_id, user_type, fullname, password FROM user_info WHERE email = ?");
+        $stmt->execute([$email]); 
+        $user = $stmt->fetch(); 
 
-            $stmt = $pdo->prepare("SELECT user_id, user_type, fullname FROM user_info WHERE email = ? AND password = ?");
-            $stmt->execute([$email, $password]); 
-            $user = $stmt->fetch(); 
-
-            if ($user) {
-
+        if ($user) {
+            if (password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_type'] = $user['user_type'];
-                $_SESSION['username'] = $user['fullname'];
+                $_SESSION['userName'] = $user['fullname'];
 
                 if ($user['user_type'] === 'Admin') {
-                    header("Location: /Serene Space/admin_panel/php/admin_dashboard.php");
+                    header("Location: /Serene_Space/admin_panel/php/admin_dashboard.php");
                 } elseif ($user['user_type'] === 'Normal') {
-                    header("Location: home/home.html);
+                    header("Location: /Serene_Space/home/home.html");
                 } elseif ($user['user_type'] === 'Therapist') {
-                    header("Location: home/home.html");
-                } else {
-                    echo "Invalid user type.";
+                    header("Location: /Serene_Space/therapist_panel/therapist_login.php");
                 }
                 exit();
             } else {
-
                 echo "Invalid credentials.";
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        } else {
+            header("Location: signup.html");
         }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
+}
 ?>
