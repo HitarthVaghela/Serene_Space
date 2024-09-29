@@ -1,0 +1,94 @@
+.sidebar_container {
+    display: flex;
+}
+
+.sidebar {
+    background-color: #e0f7fa; /* Light blue background */
+    width: 250px; /* Fixed width for sidebar */
+    transition: width 0.3s ease; /* Smooth transition for width changes */
+    min-height: 100vh; /* Full height */
+    padding-top: 20px; /* Space from top */
+    position: fixed; /* Fixed position */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar.collapsed {
+    width: 60px; /* Collapsed width */
+}
+
+.sidebar ul {
+    list-style: none; /* Remove default list styles */
+    padding-left: 0; /* Remove default padding */
+}
+
+.sidebar ul li {
+    margin: 15px 0; /* Space between list items */
+}
+
+.sidebar ul li a {
+    padding: 10px 15px; /* Padding for links */
+    display: flex; /* Flex for icon and text alignment */
+    align-items: center; /* Center align items */
+    color: #00796b; /* Dark teal text color */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.sidebar ul li a:hover {
+    background-color: #b2ebf2; /* Light blue hover background */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+.sidebar ul li a img,
+.sidebar ul li a i {
+    width: 24px; /* Icon size */
+    height: 24px; /* Icon size */
+    margin-right: 10px; /* Space between icon and text */
+    transition: margin-right 0.3s ease; /* Smooth transition for collapsed state */
+}
+
+.sidebar.collapsed ul li a img,
+.sidebar.collapsed ul li a i {
+    margin-right: 0; /* Hide icon margin when collapsed */
+}
+
+.sidebar ul li a span {
+    transition: opacity 0.3s ease; /* Smooth transition for text visibility */
+}
+
+.sidebar.collapsed ul li a span {
+    opacity: 0; /* Fade out text when collapsed */
+    display: none; /* Hide text when collapsed */
+}
+
+.sidebar .toggle-btn {
+    background-color: #e0f7fa; /* Match sidebar background */
+    color: #00796b; /* Dark teal text color */
+    border: none; /* No border */
+    padding: 10px; /* Button padding */
+    margin-bottom: 20px; /* Space below button */
+    cursor: pointer; /* Pointer cursor */
+    width: 100%; /* Full width */
+    text-align: center; /* Centered text */
+    font-size: 18px; /* Increase button font size */
+}
+
+.header {
+    background-color: #e0f7fa; /* Match sidebar background */
+    padding: 20px; /* Space inside header */
+    text-align: center; /* Centered text in header */
+}
+
+.header-content h1 {
+    margin: 0; /* Remove default margin */
+    color: #00796b; /* Dark teal text color */
+}
+@media (max-width: 768px) {
+    .dashboard {
+        margin-left: 60px;
+    }
+
+    .sidebar.collapsed {
+        width: 60px;
+    }
+}
