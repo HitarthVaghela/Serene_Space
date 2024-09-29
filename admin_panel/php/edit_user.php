@@ -10,7 +10,7 @@ include '../templates/connect_db.php';
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $user_id = $_GET['id'];
 
-    $stmt = $pdo->prepare("SELECT user_id, fullname, email FROM user_info WHERE user_id = :user_id LIMIT 1");
+    $stmt = $pdo->prepare("SELECT user_id, fullname, email, user_type FROM user_info WHERE user_id = :user_id LIMIT 1");
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -27,12 +27,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
+    $user_type = $_POST['user_type'];
 
     if (!empty($fullname) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        
-        $update_stmt = $pdo->prepare("UPDATE user_info SET fullname = :fullname, email = :email WHERE user_id = :user_id");
+        $update_stmt = $pdo->prepare("UPDATE user_info SET fullname = :fullname, email = :email, user_type = :user_type WHERE user_id = :user_id");
         $update_stmt->bindParam(':fullname', $fullname);
         $update_stmt->bindParam(':email', $email);
+        $update_stmt->bindParam(':user_type', $user_type);
         $update_stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
         if ($update_stmt->execute()) {
@@ -76,6 +77,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
         
+        <label for="user_type">User Type:</label>
+        <select id="user_type" name="user_type" required>
+            <option value="Normal" <?php echo $user['user_type'] === 'Normal' ? 'selected' : ''; ?>>Normal</option>
+            <option value="Admin" <?php echo $user['user_type'] === 'Admin' ? 'selected' : ''; ?>>Admin</option>
+            <option value="Therapist" <?php echo $user['user_type'] === 'Therapist' ? 'selected' : ''; ?>>Therapist</option>
+        </select>
+
         <button type="submit">Update User</button>
     </form>
     
