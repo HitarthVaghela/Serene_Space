@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Users List</title>
-    <link rel="stylesheet" href="../assets/user.css">
     <link rel="stylesheet" href="../assets/sidebar.css">
+    <link rel="stylesheet" href="../assets/header.css">
+    <link rel="stylesheet" href="../assets/user.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
     
@@ -27,7 +29,6 @@ try {
     $total_users_query = $pdo->query("SELECT COUNT(*) FROM user_info WHERE user_type = 'Normal'");
     $total_users = $total_users_query->fetchColumn();
 
-    // Fetch user information along with appointment status, date, and therapist ID
     $stmt = $pdo->prepare("
         SELECT u.user_id, u.fullname, u.email, 
                a.status, a.appointment_date, a.therapist_id 

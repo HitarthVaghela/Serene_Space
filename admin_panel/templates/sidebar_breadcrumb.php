@@ -8,7 +8,7 @@
 ?>
 <header class="header">
     <div class="header-content">
-        <h1>Welcome <?php echo $admin_name; ?></h1>
+        <h2>Welcome <?php echo $admin_name; ?></h2>
     </div>
 </header>
 
@@ -19,9 +19,9 @@
             <li><a href="admin_dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
             <li><a href="users.php"><i class="fas fa-users"></i><span>Users</span></a></li>
             <li><a href="therapist.php"><i class="fas fa-user-md"></i><span>Therapist</span></a></li>
-            <li><a href="admin.php"><i class="fas fa-user-shield"></i><span>Admin</span></a></li>
-            <li><a href="user_appointments.php"><i class="fas fa-calendar-check"></i><span>User Appointments</span></a></li>
-            <li><a href="therapist_schedule.php"><i class="fas fa-calendar-alt"></i><span>Therapist Schedule</span></a></li>
+            <!-- <li><a href="admin.php"><i class="fas fa-user-shield"></i><span>Admin</span></a></li> -->
+            <li><a href="appointments.php"><i class="fas fa-calendar-check"></i><span>User Appointments</span></a></li>
+            <!-- <li><a href="therapist_schedule.php"><i class="fas fa-calendar-alt"></i><span>Therapist Schedule</span></a></li> -->
             <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
         </ul>
     </aside>
