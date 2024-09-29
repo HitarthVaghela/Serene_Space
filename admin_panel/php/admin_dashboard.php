@@ -4,73 +4,36 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dashboard</title>
-	<link rel="stylesheet" href="../assets/admin_dashboard.css">
+	<link rel="stylesheet" href="../assets/dashboard.css">
+	<link rel="stylesheet" href="../assets/sidebar.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-	<script>
-		function toggleSidebar() {
-		    var sidebar = document.getElementById('sidebar');
-		    sidebar.classList.toggle('collapsed');
-		}
-	</script>
-</head>
-<?php
-include '../templates/connect_db.php';
-session_start();
+<?php 
+	include '../templates/connect_db.php' ;
+	include '../templates/sidebar_breadcrumb.php';
+    
+	try {
+	    $stmt_users = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Normal'");
+	    $total_users = $stmt_users->fetchColumn();
 
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'Admin') {
-    header("Location: /Serene_Space/login_signup/sign_in.html");
-    exit();
-}
+	    $stmt_therapists = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Therapist'");
+	    $total_therapists = $stmt_therapists->fetchColumn();
 
-$admin_name = $_SESSION['username'];
-
-try {
-    $stmt_users = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Normal'");
-    $total_users = $stmt_users->fetchColumn();
-
-    $stmt_therapists = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Therapist'");
-    $total_therapists = $stmt_therapists->fetchColumn();
-
-    $stmt_admins = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Admin'");
-    $total_admins = $stmt_admins->fetchColumn();
-	
-    $today = date('Y-m-d');
-    $stmt_appointments = $pdo->prepare("SELECT COUNT(*) FROM appointments WHERE appointment_date = ?");
-    $stmt_appointments->execute([$today]);
-    $todays_appointments = $stmt_appointments->fetchColumn();
-
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+	    $stmt_admins = $pdo->query("SELECT COUNT(user_id) FROM user_info WHERE user_type = 'Admin'");
+	    $total_admins = $stmt_admins->fetchColumn();
+	} catch (PDOException $e) {
+	    echo "Error: " . $e->getMessage();
+	}
 ?>
 
 <body>
 
-<header class="header">
-    <div class="header-content">
-    	<h1>Welcome <?php echo $admin_name; ?></h1>
-        <a href="../../home/home.html" target="_blank">Go to Website</a>
-        <nav class="breadcrumb">
-            <a href="admin_dashboard.php">Home</a>/<a href="admin_dashboard.php">Dashboard</a>
-        </nav>
-    </div>
-</header>
+	<nav class="breadcrumb">
+    <a href="admin_dashboard.php">Home</a> /
+    <a href="users.php">Users List</a> /
+    <a href="../../home/home.html" target="_blank">Go to Website</a>
+</nav>
 
-<div class="sidebar_container">
-	<aside class="sidebar" id="sidebar">
-		<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-		<ul>
-		    <li><a href="admin_dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-		    <li><a href="users.php"><i class="fas fa-users"></i><span>Users</span></a></li>
-		    <li><a href="therapist.php"><i class="fas fa-user-md"></i><span>Therapist</span></a></li>
-		    <li><a href="admin.php"><i class="fas fa-user-shield"></i><span>Admin</span></a></li>
-		    <li><a href="user_appointments.php"><i class="fas fa-calendar-check"></i><span>User Appointments</span></a></li>
-		    <li><a href="therapist_schedule.php"><i class="fas fa-calendar-alt"></i><span>Therapist Schedule</span></a></li>
-		    <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
-			</ul>
-
-	</aside>
 	<main class="dashboard">
 		<h1> Dashboard </h1>
 		<div class="card-container">
@@ -93,6 +56,7 @@ try {
 		</div>
 	</main>
 </div>
+
 </body>
 </html>
 
