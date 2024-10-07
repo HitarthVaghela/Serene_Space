@@ -12,6 +12,13 @@
 
 }
 
+.logo{
+
+    background-image: url("./home_images/logo.png");
+    background-size: cover;
+
+}
+
 body {
     background-color: #f0f0f0;
 }
@@ -21,6 +28,7 @@ body {
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px 0;
+    position:sticky;
 }
 
 .nav {
@@ -41,10 +49,11 @@ body {
 
 .nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #e76943;
     font-size: 18px;
     padding: 5px 10px;
 }
+
 
 .nav-link .dropdown {
     display: none;
@@ -87,7 +96,13 @@ body {
 .header .nav ul .logo {
     height: 100px;
     width: 100px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+}
+
+header .nav ul h2{
+
+    color: #e76943;
+
 }
 
 .header .nav ul li a:hover {
@@ -104,6 +119,50 @@ body {
     transition-delay: 2sec;
     transition: opacity 0.3s ease, transform 0.3s ease;
     border-radius: 0.5rem;
+}
+
+.login-button {
+    padding: 10px 20px;
+    background-color: rgb(231, 105, 67);
+    color: white !important; /* Ensures text color is white */
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+a.login-button {
+    color: white !important;
+}
+
+
+.login-button:hover {
+    background-color: #475931; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.name h3{
+    color: #e76943; 
+    font-size: 1.2em; 
+    margin: 0; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    transition: color 0.3s ease; 
+}
+
+.name h3 a {
+    /* color: inherit; 
+    text-decoration: none; */
+    color: #e76943; 
+    font-size: 1.2em; 
+    margin: 0; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
 .main {
@@ -140,7 +199,7 @@ body {
 
 .upr-part .lpr a {
     height: 40px;
-    width: 140px;
+    width: 280px;
     border: 1px solid rgb(231, 105, 67);
     border-radius: 1rem;
     display: flex;
@@ -149,6 +208,13 @@ body {
     text-decoration: none;
     color: white;
     background-color: rgb(231, 105, 67);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upr-part .lpr a:hover{
+    background-color: #475931; /* Slightly darker green on hover */
+    transform: translateY(-2px); /* Slight hover lift */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 .nxt-1 {
@@ -458,3 +524,60 @@ body {
         clip-path: circle(100% at 50% 50%);
     }
   }
+
+footer {
+    background-color: #4E6137; /* Darker background for contrast */
+    color: white;
+    padding: 60px 20px; /* Increased padding for a balanced look */
+    text-align: center;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between footer sections */
+}
+
+.footer-section {
+    margin: 20px;
+    flex: 1;
+    min-width: 250px; /* Ensures sections stay readable on small screens */
+}
+
+.footer-section ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes padding from list */
+}
+
+.footer-section h3 {
+    color: #e76943; /* Consistent orange color */
+    font-size: 1.2em; /* Slightly larger for emphasis */
+    margin-bottom: 20px; /* Spacing between heading and links */
+    text-transform: uppercase; /* Uniform heading style */
+    letter-spacing: 1px;
+}
+
+.footer-section a {
+    color: #fff5d1; /* Light, soft text color */
+    text-decoration: none;
+    font-size: 1em;
+    display: block; /* Makes each link take full width */
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #28a745; /* Green on hover for visual feedback */
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #fff5d1;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Light border for separation */
+    padding-top: 20px;
+}

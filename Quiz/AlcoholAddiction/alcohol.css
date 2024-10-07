@@ -1,127 +1,82 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #eef2f7;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+    font-family: Arial, sans-serif; /* Use a clean font for readability */
+    background-color: #e7f3ff; /* Light blue background for the page */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding to the body */
 }
 
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    transition: box-shadow 0.3s ease;
-}
-
-.container:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff; /* White background for quiz */
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px; /* Inner spacing */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    margin: 20px auto; /* Center the container and add space */
+    max-width: 600px; /* Maximum width for the container */
+    border: 2px solid #e76943; /* Border color matching your theme */
 }
 
 h1 {
-    font-size: 28px;
-    color: #007BFF;
-    margin-bottom: 30px;
-    font-weight: bold;
+    color: #d45d35; /* Darker shade for title color for better contrast */
+    font-size: 2.5em; /* Increased size for emphasis */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below title */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft text shadow */
 }
 
 .question {
-    margin-bottom: 25px;
-    text-align: left;
-    font-size: 18px;
+    font-size: 1.2em; /* Slightly larger for readability */
+    color: #333333; /* Darker color for question text for better contrast */
+    margin: 15px 0; /* Space above and below */
 }
 
 label {
-    display: block;
-    margin-bottom: 12px;
-    background-color: #f9f9f9;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: block; /* Make labels block elements for spacing */
+    margin: 10px 0; /* Space between options */
+    padding: 10px; /* Inner padding for clickable area */
+    background-color: #f0f8ff; /* Light background for options */
+    border: 2px solid #e76943; /* Border color matching your theme */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    cursor: pointer; /* Change cursor on hover */
+    color: #333333; /* Darker text color for readability */
 }
 
 label:hover {
-    background-color: #e7efff;
-    border-color: #007BFF;
-}
-
-input[type="radio"] {
-    margin-right: 12px;
-    transform: scale(1.2);
+    background-color: #e76943; /* Highlight on hover */
+    color: white; /* Change text color on hover */
+    transform: scale(1.02); /* Slightly larger on hover */
 }
 
 button {
-    padding: 15px 30px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 30px;
+    background-color: rgb(231, 105, 67); /* Match submit button color */
+    color: white; /* White text color */
+    padding: 12px 24px; /* Inner padding */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded edges */
+    font-size: 18px; /* Button text size */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    margin-top: 20px; /* Space above button */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
 button:hover {
-    background-color: #218838;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #475931; /* Darker on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 }
 
 #result {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #e6f7e6;
-    border-left: 6px solid #28a745;
-    font-size: 20px;
-    text-align: left;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-#result h2 {
-    color: #28a745;
-    font-size: 24px;
-    margin-bottom: 10px;
+    display: none; /* Hide result section initially */
+    margin-top: 20px; /* Space above result section */
+    padding: 15px; /* Inner padding */
+    border: 2px solid #4E4E4F; /* Dark border for result section */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background for results */
 }
 
 #review {
-    font-size: 18px;
-    color: #555;
-}
-
-a {
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    button {
-        font-size: 16px;
-        padding: 12px 20px;
-    }
-
-    #result {
-        font-size: 18px;
-    }
+    font-size: 1.5em; /* Size for emphasis */
+    color: #333333; /* Darker color for result text for better contrast */
 }
