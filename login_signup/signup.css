@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid black;
+    padding: 20px;
+    width: auto;
+    margin: auto;
+    height: 700px;
+}
+
+.left-side, .right-side {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-evenly;
+    align-items: center;
+    height: 500px;
+    width: 200px;
+    background-color: lightgreen;
+    border: 2px solid black;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-side{
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 500px; /* added this line */
+    height: 680px; /* adjusted this line */
+}
+
+.logo{
+    height: 100px;
+    width: 100px;
+    /* border: 2px solid black; */
+    border-radius: 70px;
+    background-image: url("/home/home_images/logo.png");
+    background-size: cover;
+}
+
+.left-side{
+    align-items: last baseline;
+}
+
+.sin-opt{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+    width: 500px;
+}
+
+.sin-opt a{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+    width: 230px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.already-account {
+    text-align: center;
+    
+}
+
+.already-account a {
+    text-decoration: none;
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.left-side h1 {
+    margin-bottom: 10px;
+}
+
+.right-side form {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-side input[type="text"],
+.right-side input[type="email"],
+.right-side input[type="password"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 500px !important;
+
+
+}
+
+.right-side label {
+    margin-bottom: 10px;
+}
+
+.right-side button {
+    padding: 10px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-side button:hover {
+    background-color: green;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left-side, .right-side {
+        width: 48%;
+        margin-bottom: 0;
+        height: 550px;
+    }
+}
